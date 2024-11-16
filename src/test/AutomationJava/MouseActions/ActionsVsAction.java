@@ -1,0 +1,39 @@
+package MouseActions;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+
+public class ActionsVsAction {
+
+	public static void main(String[] args) 
+	{
+		WebDriver driver = new ChromeDriver();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+		
+		driver.get("http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html");
+		driver.manage().window().maximize();
+		
+		WebElement button = driver.findElement(By.xpath("//span[@class='context-menu-one btn btn-neutral']"));
+		
+		Actions act = new Actions(driver);
+		
+		Action myaction =  act.contextClick(button).build(); //building or creating an action ans storing into a variable
+
+		myaction.perform();	// we are performing/completing action
+		
+//Actions - class, will be used to perform mouse actions
+//Action - Interface, will be used to store created actions
+		
+		
+		
+		
+	}
+
+}
